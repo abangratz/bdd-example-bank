@@ -17,5 +17,9 @@ public class AccountTest {
 	public void testCanInstantiate() {
 		assertNotNull(account);
 	}
+	@Test
+	public void testCanSetBalance() {
+		assertTrue(account.setBalance(500));
+	}
 
 }
