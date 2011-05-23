@@ -45,4 +45,11 @@ public class AccountTest {
 		assertFalse(account.withdraw(40));
 		assertEquals(new Integer(30), account.getBalance());
 	}
+	
+	public void testHasUser() {
+		User mockUser = mock(User.class);
+		account = new Account();
+	
+		
+	}
 }
