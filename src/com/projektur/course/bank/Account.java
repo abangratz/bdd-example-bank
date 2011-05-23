@@ -16,6 +16,7 @@ public class Account {
 		return balance;
 	}
 	public boolean withdraw(int i) {
+		balance -= i;
 		return true;
 	}
 
