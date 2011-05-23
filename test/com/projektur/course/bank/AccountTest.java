@@ -25,5 +25,11 @@ public class AccountTest {
 	public void testCanRetrieveBalance() {
 		assertEquals(new Integer(0), account.getBalance());
 	}
+	
+	@Test
+	public void testCanSetAndRetrieveBalance() {
+		account.setBalance(20);
+		assertEquals(new Integer(20), account.getBalance());
+	}
 
 }
