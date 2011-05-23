@@ -38,4 +38,11 @@ public class AccountTest {
 		assertTrue(account.withdraw(20));
 		assertEquals(new Integer(20), account.getBalance());
 	}
+	
+	@Test
+	public void testCanNotWithdrawIfBalanceNotOk() {
+		account.setBalance(30);
+		assertFalse(account.withdraw(40));
+		assertEquals(new Integer(30), account.getBalance());
+	}
 }
