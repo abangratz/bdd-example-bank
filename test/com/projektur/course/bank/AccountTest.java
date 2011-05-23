@@ -21,5 +21,9 @@ public class AccountTest {
 	public void testCanSetBalance() {
 		assertTrue(account.setBalance(500));
 	}
+	@Test
+	public void testCanRetrieveBalance() {
+		assertEquals(new Integer(0), account.getBalance());
+	}
 
 }
