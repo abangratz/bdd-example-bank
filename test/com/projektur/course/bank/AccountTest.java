@@ -31,5 +31,11 @@ public class AccountTest {
 		account.setBalance(20);
 		assertEquals(new Integer(20), account.getBalance());
 	}
-
+	
+	@Test
+	public void testCanWithdrawIfBalanceOk() {
+		account.setBalance(40);
+		assertTrue(account.withdraw(20));
+		assertEquals(new Integer(20), account.getBalance());
+	}
 }

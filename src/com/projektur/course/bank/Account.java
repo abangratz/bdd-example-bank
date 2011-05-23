@@ -13,8 +13,10 @@ public class Account {
 	}
 
 	public Integer getBalance() {
-		// TODO Auto-generated method stub
 		return balance;
+	}
+	public boolean withdraw(int i) {
+		return true;
 	}
 
 }
