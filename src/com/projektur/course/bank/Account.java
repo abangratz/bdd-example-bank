@@ -3,9 +3,11 @@ package com.projektur.course.bank;
 public class Account {
 
 	private Integer balance;
+	private User user;
 	
-	public Account() {
+	public Account(User the_user) {
 		balance = new Integer(0);
+		user = the_user;
 	}
 	public boolean setBalance(int i) {
 		balance = i;
@@ -16,12 +18,16 @@ public class Account {
 		return balance;
 	}
 	public boolean withdraw(int i) {
-		if (balance - i > 0) {
+		if (user.overdraftOk() || balance - i > 0) {
 			balance -= i;
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	public User getUser() {
+		return user;
 	}
 
 }

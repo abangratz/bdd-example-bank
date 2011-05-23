@@ -1,6 +1,8 @@
 package com.projektur.course.bank;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,9 +11,12 @@ import org.junit.Test;
 public class AccountTest {
 	
 	private Account account;
+	private User mockUser;
 	@Before
 	public void setUp() {
-		account = new Account();
+		mockUser = mock(User.class);
+		stub(mockUser.overdraftOk()).toReturn(false);
+		account = new Account(mockUser);;
 	}
 	@Test
 	public void testCanInstantiate() {
@@ -46,10 +51,18 @@ public class AccountTest {
 		assertEquals(new Integer(30), account.getBalance());
 	}
 	
+	@Test
 	public void testHasUser() {
-		User mockUser = mock(User.class);
-		account = new Account();
+		assertSame(mockUser, account.getUser());
+	}
 	
-		
+	@Test
+	public void testCanOverdraftIfOk() {
+		mockUser = mock(User.class);
+		stub(mockUser.overdraftOk()).toReturn(true);
+		account = new Account(mockUser);
+		account.setBalance(50);
+		assertTrue(account.withdraw(100));
+		assertEquals(new Integer(-50), account.getBalance());
 	}
 }
